@@ -1,0 +1,16 @@
+{
+  "name": "animation-page",
+  "version": "1.0.0",
+  "description": "Single-page snowflake and balloon animation demo",
+  "type": "module",
+  "scripts": {
+    "generate-config": "node scripts/generate-config.mjs",
+    "test": "vitest"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "vitest": "^0.34.1"
+  }
+}
