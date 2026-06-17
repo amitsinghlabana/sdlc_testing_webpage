@@ -1,0 +1,8 @@
+{
+  "snowflakeColor": "#ffffff",
+  "snowflakeDuration": 12,
+  "snowflakeSize": "1.5rem",
+  "balloonColor": "#ff4d69",
+  "balloonDuration": 10,
+  "balloonSpacing": 800
+}
