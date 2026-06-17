@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snowflakes &amp; Balloons</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="intro">
+        <h1>Snowflakes or Balloons?</h1>
+        <p class="lead">Pick an effect and watch it animate within this single viewport.</p>
+      </header>
+      <section class="controls" aria-label="Animation controls">
+        <button id="btn-snow" type="button" aria-label="Show snowflakes" class="control-button">
+          Snowflakes
+        </button>
+        <button id="btn-balloons" type="button" aria-label="Show balloons" class="control-button">
+          Balloons
+        </button>
+      </section>
+      <section class="animation-area" id="animation-area" aria-live="polite" aria-label="Animation viewport">
+        <p class="placeholder">Choose an effect to begin the animation.</p>
+      </section>
+    </main>
+    <script type="module" src="./scripts/animation.js"></script>
+  </body>
+</html>
