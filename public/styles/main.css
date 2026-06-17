@@ -1,0 +1,174 @@
+:root {
+  --background: #0f172a;
+  --panel: rgba(15, 23, 42, 0.9);
+  --text: #e2e8f0;
+  --accent: #38bdf8;
+  --snowflake-color: var(--accent);
+  --snowflake-duration: 12s;
+  --snowflake-size: 1.5rem;
+  --balloon-color: #ff4d69;
+  --balloon-duration: 10s;
+  --balloon-spacing: 800ms;
+  --control-focus: 3px solid #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1e3a8a, #0f172a 60%);
+  color: var(--text);
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem 1rem 2rem;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.lead {
+  margin: 0.5rem auto 0;
+  max-width: 32rem;
+  color: #cbd5f5;
+}
+
+.controls {
+  display: inline-flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  background: var(--panel);
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.4);
+}
+
+.control-button {
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.control-button:focus-visible {
+  outline: var(--control-focus);
+  outline-offset: 2px;
+}
+
+.control-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.control-button.active {
+  background: var(--accent);
+  color: #08142d;
+}
+
+.animation-area {
+  position: relative;
+  flex: 1;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(226, 232, 240, 0.3);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95) 60%, rgba(2, 6, 23, 0.9));
+  box-shadow: inset 0 0 80px rgba(15, 23, 42, 0.8);
+}
+
+.animation-area .placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: rgba(226, 232, 240, 0.7);
+}
+
+.snowflake,
+.balloon {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+
+@keyframes snow-fall {
+  0% {
+    transform: translate3d(0, -10vh, 0) scale(0.4);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 110vh, 0) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.snowflake {
+  color: var(--snowflake-color);
+  font-size: var(--snowflake-size);
+  animation: snow-fall var(--snowflake-duration) linear infinite;
+}
+
+@keyframes balloon-rise {
+  0% {
+    transform: translate3d(0, 110vh, 0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -40vh, 0) scale(1);
+    opacity: 0;
+  }
+}
+
+.balloon {
+  width: 3rem;
+  height: 4rem;
+  background: var(--balloon-color);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: balloon-rise var(--balloon-duration) ease-in infinite;
+  box-shadow: inset -0.25rem -0.5rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 0.4rem solid transparent;
+  border-right: 0.4rem solid transparent;
+  border-top: 0.6rem solid var(--balloon-color);
+  transform: translateX(-50%);
+}
+
+.balloon::before {
+  content: "";
+  position: absolute;
+  bottom: -2.2rem;
+  left: 50%;
+  width: 1px;
+  height: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateX(-50%);
+}
